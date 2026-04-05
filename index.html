@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Friendship Scroll Card</title>
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<h1>Friendship Card</h1>
+
+<div class="scroll">
+
+  <div class="rod top-rod"></div>
+  <div class="rod bottom-rod"></div>
+
+  <div class="friends">
+    <img id="leftAvatar" class="girl left hidden">
+    <img id="rightAvatar" class="girl right hidden">
+    <div class="heart hidden">❤️</div>
+  </div>
+
+  <div class="dear">
+    Dear <input id="toName" placeholder="Friend">
+  </div>
+
+  <textarea id="message" placeholder="Write your message..."></textarea>
+
+  <div class="love">
+    <span>With Love,</span>
+    <input id="fromName" placeholder="Your name">
+  </div>
+
+</div>
+
+<button onclick="generateLink()">Generate Link</button>
+
+<div id="actions">
+  <button onclick="copyLink()">Copy Link</button>
+  <button onclick="shareWhatsApp()">WhatsApp</button>
+</div>
+
+<p id="link"></p>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
