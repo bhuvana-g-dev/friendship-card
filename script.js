@@ -1,6 +1,6 @@
 let generatedURL = "";
 
-const BASE_URL = "https://friendship-backend-imlj.onrender.com";
+const BASE_URL = "https://friendship-backend-tlsh.onrender.com";
 
 let avatarOptions = [
   "asset/girl1.svg",
@@ -23,7 +23,7 @@ window.onload = async function(){
   const params = new URLSearchParams(window.location.search);
   let id = params.get("id");
 
-  // ✅ ONLY ID BASED LOADING (NO QUERY LOGIC)
+  // Load saved card if shared link has id
   if(id){
     try {
       const res = await fetch(`${BASE_URL}/card/${id}`);
@@ -51,16 +51,31 @@ window.onload = async function(){
   updateAvatar("left");
   updateAvatar("right");
 
-  // Avatar click
+  // Left avatar click
   document.getElementById("leftAvatar").onclick = () => {
     leftIndex = (leftIndex + 1) % avatarOptions.length;
     updateAvatar("left");
+
+    const hint = document.getElementById("avatarHint");
+    if(hint) hint.classList.add("hide");
   };
 
+  // Right avatar click
   document.getElementById("rightAvatar").onclick = () => {
     rightIndex = (rightIndex + 1) % avatarOptions.length;
     updateAvatar("right");
+
+    const hint = document.getElementById("avatarHint");
+    if(hint) hint.classList.add("hide");
   };
+
+  // Auto hide hint after 4 seconds
+  setTimeout(() => {
+    const hint = document.getElementById("avatarHint");
+    if(hint){
+      hint.classList.add("hide");
+    }
+  }, 4000);
 
   // Animation
   setTimeout(() => {
@@ -138,15 +153,32 @@ async function generateLink(){
   }
 }
 
+/* ================= GENERATE + COPY ================= */
+async function generateAndCopy(){
+  await generateLink();
+  if(generatedURL){
+    navigator.clipboard.writeText(generatedURL);
+    showToast();
+  }
+}
+
+/* ================= TOAST ================= */
+function showToast(){
+  const toast = document.getElementById("toast");
+  toast.classList.add("show");
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2500);
+}
+
 /* ================= COPY ================= */
 function copyLink(){
   if(!generatedURL){
     alert("Generate link first");
     return;
   }
-
   navigator.clipboard.writeText(generatedURL);
-  alert("Link copied!");
+  showToast();
 }
 
 /* ================= WHATSAPP ================= */

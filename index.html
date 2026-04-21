@@ -5,13 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Friendship Scroll Card</title>
 <link rel="stylesheet" href="style.css">
-
 <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<h1>Friendship Card</h1>
+<h1>Special Card</h1>
 
 <div class="scroll">
 
@@ -23,6 +22,8 @@
     <img id="rightAvatar" class="girl right hidden">
     <div class="heart hidden">❤️</div>
   </div>
+
+  <p class="hint" id="avatarHint">Tap avatar to change 👆</p>
 
   <div class="dear">
     Dear <input id="toName" placeholder="Friend">
@@ -37,12 +38,17 @@
 
 </div>
 
-<button onclick="generateLink()">Generate Link</button>
-
 <div id="actions">
-  <button onclick="copyLink()">Copy Link</button>
-  <button onclick="shareWhatsApp()">WhatsApp</button>
+  <button onclick="generateAndCopy()">Copy Link</button>
+  <button class="wa-btn" onclick="shareWhatsApp()" title="Share on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="22" height="22" fill="white">
+      <path d="M16 2C8.268 2 2 8.268 2 16c0 2.49.664 4.942 1.922 7.1L2 30l7.1-1.9A13.94 13.94 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.5a11.44 11.44 0 0 1-5.83-1.594l-.418-.248-4.213 1.127 1.14-4.106-.272-.432A11.5 11.5 0 1 1 16 27.5zm6.29-8.618c-.344-.172-2.036-1.004-2.352-1.118-.316-.115-.546-.172-.776.172-.23.344-.892 1.118-1.094 1.348-.2.23-.402.258-.746.086-.344-.172-1.452-.535-2.766-1.707-1.022-.912-1.712-2.038-1.912-2.382-.2-.344-.022-.53.15-.7.155-.154.344-.402.516-.603.172-.2.23-.344.344-.574.115-.23.058-.43-.029-.603-.086-.172-.776-1.87-1.064-2.562-.28-.674-.564-.582-.776-.593l-.66-.011c-.23 0-.603.086-.918.43-.316.344-1.206 1.178-1.206 2.872s1.235 3.332 1.407 3.562c.172.23 2.43 3.71 5.888 5.204.823.355 1.465.567 1.966.726.826.263 1.578.226 2.172.137.663-.099 2.036-.832 2.323-1.635.287-.803.287-1.492.2-1.635-.086-.144-.316-.23-.66-.402z"/>
+    </svg>
+  </button>
 </div>
+
+<!-- Toast notification -->
+<div id="toast">✅ Link Copied!</div>
 
 <p id="link"></p>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
