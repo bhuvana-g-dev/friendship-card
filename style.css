@@ -272,26 +272,38 @@ transform:translateX(-50%) !important;
 }
 
 .friends{
-height:170px !important;
-position:relative;
-}
+    height:170px !important;
+    position:relative;
+  }
 
-.girl{
-width:88px !important;
-}
-.left{
-left:22% !important;
-}
+  .girl{
+    width:88px !important;
+  }
 
-.right{
-right:22% !important;
-}
+  .heart{
+    top:8px !important;
+    font-size:34px !important;
+    z-index:2;
+  }
 
-.heart{
-top:8px !important;
-font-size:34px !important;
-z-index:2;
-}
+  .show.left{
+    animation:moveRightMobile 1.8s forwards !important;
+  }
+
+  .show.right{
+    animation:moveLeftMobile 1.8s forwards !important;
+  }
+
+  @keyframes moveRightMobile{
+    from{ left:-120px; }
+    to{ left:22%; }
+  }
+
+  @keyframes moveLeftMobile{
+    from{ right:-120px; }
+    to{ right:22%; }
+  }
+
 
 
 .dear,
