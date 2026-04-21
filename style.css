@@ -272,12 +272,27 @@ transform:translateX(-50%) !important;
 }
 
 .friends{
-height:120px !important;
+height:170px !important;
+position:relative;
 }
 
 .girl{
-width:95px !important;
+width:88px !important;
 }
+.left{
+left:22% !important;
+}
+
+.right{
+right:22% !important;
+}
+
+.heart{
+top:8px !important;
+font-size:34px !important;
+z-index:2;
+}
+
 
 .dear,
 .love{
