@@ -182,12 +182,13 @@ function copyLink(){
 }
 
 /* ================= WHATSAPP ================= */
-function shareWhatsApp(){
+ function shareWhatsApp(){
   if(!generatedURL){
-    alert("Generate link first");
-    return;
+    await generateLink();
   }
 
-  let wa = "https://wa.me/?text=" + encodeURIComponent(generatedURL);
-  window.open(wa, "_blank");
+  if(generatedURL){
+    let wa = "https://wa.me/?text=" + encodeURIComponent(generatedURL);
+    window.open(wa, "_blank");
+  }
 }
